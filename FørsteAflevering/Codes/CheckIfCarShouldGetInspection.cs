@@ -10,11 +10,23 @@ namespace FirstAssignment.Codes
 {
     internal struct CheckIfCarShouldGetInspection
     {
+        private CarModels CarModels { get; set; }
+        public CheckIfCarShouldGetInspection(CarModels carModels)
+        {
+            CarModels = carModels;
+            if (ShouldCarGetInspection())
+            {
+                Console.WriteLine("Bilen skal til syn");
+            }
+            else
+            {
+                Console.WriteLine("Bilen skal ikke synes");
+            }
+        }
+
         public bool ShouldCarGetInspection()
         {
             DateOnly currentTime = DateOnly.FromDateTime(DateTime.Now);
-
-            CarModels CarModels = new();
 
             int inspectionTimeAfterRegistrationInYears = (int)CarInspectionEnum.inspectionTimeAfterRegistrationInYears;
             int inspectionTimeAfterLastEnspectionInYears = (int)CarInspectionEnum.inspectionTimeAfterLastInspecionInYears;
